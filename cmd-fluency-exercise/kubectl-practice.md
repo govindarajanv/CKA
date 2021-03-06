@@ -7,6 +7,7 @@
 - Get users </br> $ k config get-users
 - Get all clusters </br> $ k config get-clusters
 - Display events for a given namespace </br> $ k events -n default
+- view the events to get which scheduler picked it up </br> $ k get events
 - Set bash completion
    - open ~/.bashrc
    - type the following  </br>alias k='kubectl'</br>source<(kubectl bash completion|sed 's/kubectl/k/g')</br>export do='dry-run=client -o yaml'
@@ -19,15 +20,22 @@
 - How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver
 - Create a pod manifest for nginx  image with requests and limits and run a sleep command </br> $ k run httpd -o yaml --dry-run=client --image=httpd --requests "cpu=100m,memory=256Mi" --limits "cpu=200m,memory=512Mi" --namespace=default --command --sh -c "sleep 300" > nginx.yml
 - Get more details from nginx pod </br> $ k describe pod nginx
+- Get labels of a pod </br> $ k get pods --show-labels
+- Get node details of all pods </br> $ k get pods -o wide
+- Select a pod matching labels env=prod and bu=finance </br> $ k get pods -l env=prod,bu=finance
 - Edit nginx pod </br> $ k edit pod nginx
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
 - Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 </br> alternatively update replicas to 5 in deployment manifest yaml
 - Set a namespace dev as default namespace for the current context </br> $ k config set-context $(k config current-context) --namespace=dev
 - Change to a different context </br> $ k config use-context prod-user@production
-- Create/replace/delete/apply resources from manifests </br> $k {create|replace|delete|apply} -f manifest.yml
+- Create/update/delete/apply resources from manifests </br> $k {create|replace|delete|apply} -f manifest.yml
 - Create a namespace dummy </br> $ k create ns dummy
 - Count a list of entries from kubectl command </br> $ k get pods --no-headers |wc -l
 - Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes </br> $ k expose pod nginx -o yaml --dry-run=client --port=80 --name nginx-service --type=NodePort </br> after port 80 add "nodePort: 30080"
 - Create a Service named nginx of type ClusterIP to expose pod nginx's port 6379 </br> $ k expose pod nginx -o yaml --dry-run=client --port=6379 --name nginx-service 
+- Create a service named nginx-service for a deployment named nginx </br> $ k expose deployment nginx -o yaml --dry-run=client --port 80 --name nginx-service --type=NodePort
+- Create a pod and a service in one shot </br> $ k run httpd --image=httpd:alpine --port=80 --expose 
 - To replace a resource from yaml </br> $ k replace --force -f manifest.yml
-- 
+- Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
+- To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 toelrations
+- Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
