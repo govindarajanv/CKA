@@ -1,4 +1,5 @@
 - Set alias for kubectl </br>$ alias k=kubectl
+- Get kubectl version </br> $ k version --short
 - Get info about a k8s object </br> $ k explain pod </br> $ k explain pod.spec
 - Get yml structure of a k8s object </br> $ k explain pod --recursive
 - Get cluster info </br> $ k cluster-info </br> $ k cluster-info dump
@@ -39,9 +40,20 @@
 - Create a service named nginx-service for a deployment named nginx </br> $ k expose deployment nginx -o yaml --dry-run=client --port 80 --name nginx-service --type=NodePort
 - Create a pod and a service in one shot </br> $ k run httpd --image=httpd:alpine --port=80 --expose 
 - To replace a resource from yaml </br> $ k replace --force -f manifest.yml
+- To update a deployment with a new image </br> $ k set image deployment/deployment-name <container-name>=nginx:1.9.1
 - Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
 - To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 toelrations
 - Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
 - Continuously inquire a pod </br> $ watch "kubectl get pods" 
 - Inquire process at pod and node </br> $ k top node 01 </br> $ k top nginx
-- 
+- Get Rollout state of a deployment </br> $ k rollout status deployment/deployment-name
+- Get Rollout history of a deployment </br> $ k rollout history deployment/deployment-name
+- Rollback a deployment </br> $ k rollout undo deployment/deployment-name
+- Create a configMap from literal </br> $ k create configmap app-config --from-literal=APP_COLOR=blue
+- Create a configMap from file </br> $ k create configmap app-config --from-file=app-config.properities
+- Create a secret from literal </br> $ k create secret app-secret --from-literal=APP_COLOR=blue
+- Create a secret from file </br> $ k create secret app-secret --from-file=app-secret.properities
+- Perform draining of nodes </br> $ k cordon node01 </br> $ k drain node01 </br> $ k uncordon node01
+- Create a service account 'sa1' </br> $ k create sa sa1
+- Check access </br> $ k auth can-i create deployments </br> $ k auth can-i delete nodes
+- Check access for other users </br> $ k auth can-i create deployments --as dev-user -n default
