@@ -8,9 +8,9 @@
 - Get all clusters </br> k config get-clusters
 - Display events for a given namespace </br> $ k events -n default
 - Set bash completion
- - open ~/.bashrc
- - type the following  </br>alias k='kubectl'</br>source<(kubectl bash completion|sed 's/kubectl/k/g')</br>export do='dry-run=client -o yaml'
- - source ~/.bashrc
+   - open ~/.bashrc
+   - type the following  </br>alias k='kubectl'</br>source<(kubectl bash completion|sed 's/kubectl/k/g')</br>export do='dry-run=client -o yaml'
+   - source ~/.bashrc
 - Set vimrc
- - set tabstop=2 shiftwidth=2 expandtab ai  
- - if you already have tabs ":retab"
+   - set tabstop=2 shiftwidth=2 expandtab ai  
+   - if you already have tabs ":retab"
