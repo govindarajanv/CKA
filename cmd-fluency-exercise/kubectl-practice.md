@@ -1,7 +1,16 @@
 - Set alias for kubectl </br>$ alias k=kubectl
 - Get info about a k8s object </br> $ k explain pod </br> $ k explain pod.spec
 - Get yml structure of a k8s object </br> $ k explain pod --recursive
-- Get cluster info </br> $ k cluster-info
+- Get cluster info </br> $ k cluster-info </br> $ k cluster-info dump
 - Get cofiguration </br> $ k config -h </br> k config view # View content of ~/.kube/config | /etc/kubernetes/admin.conf
+- Get contexts </br> k config get-contexts
+- Get users </br> k config get-users
+- Get all clusters </br> k config get-clusters
 - Display events for a given namespace </br> $ k events -n default
-
+- Set bash completion
+ - open ~/.bashrc
+ - type the following  </br>alias k='kubectl'</br>source<(kubectl bash completion|sed 's/kubectl/k/g')</br>export do='dry-run=client -o yaml'
+ - source ~/.bashrc
+- Set vimrc
+ - set tabstop=2 shiftwidth=2 expandtab ai  
+ - if you already have tabs ":retab"
