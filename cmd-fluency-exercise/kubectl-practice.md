@@ -20,11 +20,13 @@
 - Get the version of KAS via http call </br? k proxy &; curl http://localhost:8001/version
 - How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver
 - Create a pod manifest for nginx  image with requests and limits and run a sleep command </br> $ k run httpd -o yaml --dry-run=client --image=httpd --requests "cpu=100m,memory=256Mi" --limits "cpu=200m,memory=512Mi" --namespace=default --command --sh -c "sleep 300" > nginx.yml
+- Execute a command on a pod </br> $ k exec -it nginx -- date -s '19 APR 2012 11:14:00'
 - Get more details from nginx pod </br> $ k describe pod nginx
 - Get labels of a pod </br> $ k get pods --show-labels
 - Get node details of all pods </br> $ k get pods -o wide
 - Get logs of a pod </br> $ k logs nginx
 - Get logs of a container in pod </br> $ k logs nginx -c container1
+- Get logs of previous version of pod </br> $ k logs -f --previous
 - Continuously stream logs </br> $ k logs -f nginx [container]
 - Select a pod matching labels env=prod and bu=finance </br> $ k get pods -l env=prod,bu=finance
 - Edit nginx pod </br> $ k edit pod nginx
@@ -57,3 +59,4 @@
 - Create a service account 'sa1' </br> $ k create sa sa1
 - Check access </br> $ k auth can-i create deployments </br> $ k auth can-i delete nodes
 - Check access for other users </br> $ k auth can-i create deployments --as dev-user -n default
+- Identify namespaced and non namespaced resources </br> $ k api-resources --namespaced=true
