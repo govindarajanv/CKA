@@ -22,6 +22,9 @@
 - Get more details from nginx pod </br> $ k describe pod nginx
 - Get labels of a pod </br> $ k get pods --show-labels
 - Get node details of all pods </br> $ k get pods -o wide
+- Get logs of a pod </br> $ k logs nginx
+- Get logs of a container in pod </br> $ k logs nginx -c container1
+- Continuously stream logs </br> $ k logs -f nginx [container]
 - Select a pod matching labels env=prod and bu=finance </br> $ k get pods -l env=prod,bu=finance
 - Edit nginx pod </br> $ k edit pod nginx
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
@@ -39,3 +42,6 @@
 - Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
 - To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 toelrations
 - Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
+- Continuously inquire a pod </br> $ watch "kubectl get pods" 
+- Inquire process at pod and node </br> $ k top node 01 </br> $ k top nginx
+- 
