@@ -17,5 +17,5 @@
 - Connect to Kube API Server via proxy </br> $ k proxy # This lists API Groups
 - Get the version of KAS via http call </br? k proxy &; curl http://localhost:8001/version
 - How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver
-- Create a pod manifest for nginx  image with requests and limits and run a sleep command </br> $ k run nginx --dry-run=client -o yaml --image=nginx --requests "cpu=100m,memory=256Mi" --limits "cpu200m,memory=512Mi" --command -- sh -c "sleep 300" > nginx.yml
-- Create a deployment for nginx </br> $ k create deploy nginx --image=nginx --dry-run-client -o yaml > mydeploy.yml
+- Create a pod manifest for nginx  image with requests and limits and run a sleep command </br> $ k run nginx -o yaml --dry-run=client --image=nginx --requests "cpu=100m,memory=256Mi" --limits "cpu200m,memory=512Mi" --command -- sh -c "sleep 300" > nginx.yml
+- Create a deployment for nginx </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx > mydeploy.yml
