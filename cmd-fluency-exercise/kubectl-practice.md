@@ -21,3 +21,4 @@
 - Get more details from nginx pod </br> $ k describe pod nginx
 - Edit nginx pod </br> $ k edit pod nginx
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
+- Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 </br> alternatively update replicas to 5 in deployment manifest yaml
