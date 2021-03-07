@@ -8,6 +8,6 @@
     - $ top for CPU  
     - $df -h disk
     - $ service kubelet status
-    - $ sudo journalctl -u kubelet
+    - $ sudo journalctl -u kubelet or $ journalctl -u kubelet -f
   - Check the kubelet certificates to ensure they are not expired
     - $ openssl -x509 -in /var/lib/kubelet/worker-1.crt -text 
