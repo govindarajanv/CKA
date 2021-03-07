@@ -11,7 +11,7 @@
 - if CoreDNS pods and the kube-dns service are working fine, check the kube-dns service has valid endpoints $ kubectl -n kube-system get ep kube-dns
   - If there are no endpoints for the service, inspect the service and make sure it uses the correct selectors and ports
 - In a cluster configured with kubeadm, you can find kube-proxy as a daemonset
-  - Get status of kueb-proxy
+  - Get status of kube-proxy
   - Check kube-proxy logs
   - Check configmap is correctly defined and the config file for running kube-proxy binary is correct.
   - Get the configuration file from command displayed by $ kubectl describe ds kube-proxy -n kube-system
