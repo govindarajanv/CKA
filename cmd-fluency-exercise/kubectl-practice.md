@@ -4,6 +4,7 @@
 - Get yml structure of a k8s object </br> $ k explain pod --recursive
 - Get cluster info </br> $ k cluster-info </br> $ k cluster-info dump
 - Get cofiguration </br> $ k config -h </br> k config view # View content of ~/.kube/config | /etc/kubernetes/admin.conf
+- Get the config view from custom kubeconfig </br> $ k config view --kubeconfig=/root/my-kube-config
 - Get contexts </br> $ k config get-contexts
 - Get users </br> $ k config get-users
 - Get all clusters </br> $ k config get-clusters
