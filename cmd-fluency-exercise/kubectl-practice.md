@@ -62,3 +62,5 @@
 - Check access for other users </br> $ k auth can-i create deployments --as dev-user -n default
 - Identify namespaced and non namespaced resources </br> $ k api-resources --namespaced=true
 - Inquire pod using jsonpath </br> $ k get pods -o=jsonpath='{ .items[0].spec.containers[0].image } {"\n"}{ .items[0].spec.containers[0].command }'
+- Inquire context using filtering functionality of json query path </br> $ k config view --kubeconfig=my-kube-config -o=jsonpath="{ .contexts[?(@.context.user=='aws-user')].name}"   
+    - Remember to use double quotes for jsonpath query when you use filter with single quotes inside the query
