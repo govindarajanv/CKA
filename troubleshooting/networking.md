@@ -15,3 +15,4 @@
   - Check kube-proxy logs
   - Check configmap is correctly defined and the config file for running kube-proxy binary is correct.
   - Get the configuration file from command displayed by $ kubectl describe ds kube-proxy -n kube-system
+  - * Remember:* kube-proxy configurations are fed through config Maps which is not listed by $ k get all -n kube-system
