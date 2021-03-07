@@ -60,3 +60,4 @@
 - Check access </br> $ k auth can-i create deployments </br> $ k auth can-i delete nodes
 - Check access for other users </br> $ k auth can-i create deployments --as dev-user -n default
 - Identify namespaced and non namespaced resources </br> $ k api-resources --namespaced=true
+- Inquire pod using jsonpath </br> $ k get pods -o=jsonpath='{ .items[0].spec.containers[0].image } {"\n"}{ .items[0].spec.containers[0].command }'
