@@ -1,5 +1,7 @@
 ## Networking related troubleshooting
 
+- CNI plugin is located at /etc/cni/net.d/  , other way to check is $ kubectl get pods
+- if it is not installed, install from the link provided in the documentation (search for 'cloud.weave.works')
 - Refer the below configuration of kubelet (/var/lib/kubelet)
   - cni-bin-dir:   Kubelet probes this directory for plugins on startup
 
