@@ -9,5 +9,6 @@
     - $df -h disk
     - $ service kubelet status
     - $ sudo journalctl -u kubelet or $ journalctl -u kubelet -f
+    - $ cat /var/lib/kubelet/config.yml and $ cat /etc/kubernetes/kubelet.conf
   - Check the kubelet certificates to ensure they are not expired
     - $ openssl -x509 -in /var/lib/kubelet/worker-1.crt -text 
