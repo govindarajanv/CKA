@@ -16,3 +16,8 @@
   - Check configmap is correctly defined and the config file for running kube-proxy binary is correct.
   - Get the configuration file from command displayed by $ kubectl describe ds kube-proxy -n kube-system
   - *Remember:* kube-proxy configurations are fed through config Maps which is not listed by $ k get all -n kube-system
+- check if name resolution works from within pod $nslookup <dnsname>
+- check if endpoints of a service has all ip addresses of related pods
+    - $ wget -q0- <pod ip>:<port>  # this gives out hostname
+- Login to kube-proxy $ kubectl exec -it <kube proxy pod> -n kube-system -- sh  
+    - $ iptables-save | grep hostname
