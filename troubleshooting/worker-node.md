@@ -19,3 +19,4 @@
         - $ systemctl status kubelet.service
   - Check the kubelet certificates to ensure they are not expired
     - $ openssl -x509 -in /var/lib/kubelet/worker-1.crt -text 
+  - Default port used by kubelet to communicate with KAS is 6443
