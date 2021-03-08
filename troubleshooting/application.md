@@ -1,6 +1,6 @@
 ## Application Troubleshooting
 
-- get all objects under a given namespace to get a glance on k8s objects deployed </br> $ kubectl get all -n alpha
+- get all objects under a given namespace to get a glance on k8s objects deployed </br> $ kubectl get all -n <namespace>
 - check if there are any restarts
 - check if service name and ports are correct by describing the services
 - check if selectors used by svc are matching with pods selectors
