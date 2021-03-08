@@ -2,6 +2,12 @@
 
 - Check the status of nodes
 - Check the status of pods
+- if pods are in pending state without any issues with those pods, there could issue with scheduler
+- Note: static pods will have node name appended (kube-scheduler if run as static pod will have its node name appended in its pod name)
+- check the service configuration /etc/systemd/system/kubelet.service.d/10.kubeadm.conf
+    - you will get config and args from this file
+    - search for 'staticPodPath' in config.yml -> gives the default path for storing configurations related to static pods
+- if the scaling does not work, the issue could be with kube-controller-manager
 
 ### Control plane components as pods
 
