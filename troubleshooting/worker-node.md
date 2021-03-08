@@ -13,5 +13,9 @@
     - $ service kubelet status
     - $ sudo journalctl -u kubelet or $ journalctl -u kubelet -f   # presss CTRL+G to reach bottom of the log
     - Get the config file from /etc/systemd/system/kubelet.service.d/10-kubeadm.conf and then $ cat /var/lib/kubelet/config.yml and $ cat /etc/kubernetes/kubelet.conf
+    - Whenever you change kubelet config
+        - $ systemctl daemon-reload
+        - $ systemctl restart kubelet.service
+        - $ systemctl status kubelet.service
   - Check the kubelet certificates to ensure they are not expired
     - $ openssl -x509 -in /var/lib/kubelet/worker-1.crt -text 
