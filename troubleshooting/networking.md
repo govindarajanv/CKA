@@ -22,3 +22,7 @@
     - $ wget -q0- <pod ip>:<port>  # this gives out hostname
 - Login to kube-proxy $ kubectl exec -it <kube proxy pod> -n kube-system -- sh  
     - $ iptables-save | grep hostname
+- Possible issues
+    - network plugin might not be installed
+    - kube-proxy might have issues. check config maps and daemonsets
+    - kube-dns might have issues. please check endpoints and services associated with it. selectors might be wrong
