@@ -9,9 +9,9 @@
   - get last heartbeat time to know when the node has crashed
   - check the node 
     - $ top for CPU  
-    - $df -h disk
+    - $ df -h disk
     - $ service kubelet status
-    - $ sudo journalctl -u kubelet or $ journalctl -u kubelet -f
-    - $ cat /var/lib/kubelet/config.yml and $ cat /etc/kubernetes/kubelet.conf
+    - $ sudo journalctl -u kubelet or $ journalctl -u kubelet -f   # presss CTRL+G to reach bottom of the log
+    - Get the config file from /etc/systemd/system/kubelet.service.d/10-kubeadm.conf and then $ cat /var/lib/kubelet/config.yml and $ cat /etc/kubernetes/kubelet.conf
   - Check the kubelet certificates to ensure they are not expired
     - $ openssl -x509 -in /var/lib/kubelet/worker-1.crt -text 
