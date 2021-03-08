@@ -13,5 +13,5 @@
 - service port could be wrong
 - service might not have endpoints (like when no matching pods available)
 - service might have wrong pod selectors
-- connection string or env variables could be wrong
+- connection string or env variables could be wrong in deployments or pods
 - pods might be down due to errors
