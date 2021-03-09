@@ -34,6 +34,7 @@
 - Edit nginx pod </br> $ k edit pod nginx
 - To taint a node </br> $ k taint node <nodename> key=value:effect   # effect NoSchedule
 - To untaint a node </br> $ k taint node <nodename> key=value:effect-
+- To add tolerations, create pod yaml using declarative way and then copy three lines of containers section under spec and rename based on your requirements
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
 - Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 </br> alternatively update replicas to 5 in deployment manifest yaml
 - Set a namespace dev as default namespace for the current context </br> $ k config set-context $(k config current-context) --namespace=dev
