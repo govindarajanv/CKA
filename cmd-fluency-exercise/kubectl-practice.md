@@ -69,3 +69,5 @@
 - Inquire context using filtering functionality of json query path </br> $ k config view --kubeconfig=my-kube-config -o=jsonpath="{ .contexts[?(@.context.user=='aws-user')].name}"   
     - Remember to use double quotes for jsonpath query when you use filter with single quotes inside the query
 - To delete a pod without delay </br> $ k delete pod mypod --grace-period=0 --force
+- To check authorization </br> $ k auth can-i get deploy -n blue --as dev-user
+- To perform action on behalf of another user </br> $ kubectl get deploy -n blue --as dev-user
