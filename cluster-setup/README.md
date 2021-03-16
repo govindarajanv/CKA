@@ -1,1 +1,26 @@
+## Cluster Setup
 
+- Ensure Docker is installed
+    - $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    - 
+- Setup a k8s cluster with a master and two worker nodes 
+    - On all three nodes
+      - $ sudo apt-get update -y
+      - $ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      - $ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      - $ sudo apt-get update -y
+      - $ apt-get install -y kubelet kubeadm kubectl
+      - $ sudo apt-get install -y kubelet kubeadm kubectl
+      - $ sudo apt-mark hold kubelet kubeadm kubectl
+    - On master node
+      - $ kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors="all"
+      - $ mkdir -p $HOME/.kube
+      - $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+      - $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+      - Get the kubeadm join string ..
+      - $ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+    - On worker nodes
+      - $ kubeadm join ....
+    - On master node
+      - $ kubeadm get nodes
+- Setup an nginx deployment on this cluster
