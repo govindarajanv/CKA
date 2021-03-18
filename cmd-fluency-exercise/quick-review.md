@@ -8,3 +8,4 @@
 - To search for 5 lines before and after matching expression </br> $ kubectl explain po --recursive |grep -i -A 5 -B5 affinity
 - view the events to get which scheduler picked it up </br> $ kubectl get events
 - To view logs </br> $ kubectl logs -f event-simulator <container name>
+- deployments $ kubectl rollout statis deployment/deployment-name </br> $ kubectl rollout history deployment/deployment-name </br> $ kubectl rollout undo deployment/myapp-deploymentname
