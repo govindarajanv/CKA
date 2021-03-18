@@ -7,3 +7,4 @@
 - To create pod and expose service </br> $ kubectl run httpd -o yaml --dry-run=client --image=httpd:alpine --port=80 --expose 
 - To search for 5 lines before and after matching expression </br> $ kubectl explain po --recursive |grep -i -A 5 -B5 affinity
 - view the events to get which scheduler picked it up </br> $ kubectl get events
+- To view logs </br> $ kubectl logs -f event-simulator <container name>
