@@ -5,3 +5,4 @@
 - To create/replace k8s objects use --force
 - Update image in a deployment </br> $ kubectl set image deployment nginx nginx:1.18
 - To create pod and expose service </br> $ kubectl run httpd -o yaml --dry-run=client --image=httpd:alpine --port=80 --expose 
+- To search for 5 lines before and after matching expression </br> $ kubectl explain po --recursive |grep -i -A 5 -B5 affinity
