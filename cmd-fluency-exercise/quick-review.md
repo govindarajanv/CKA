@@ -4,3 +4,4 @@
 - To create pod using pod definition in other namespace </br> $ kubectl create -f pod-definition.yml -n mynamespace
 - To create/replace k8s objects use --force
 - Update image in a deployment </br> $ kubectl set image deployment nginx nginx:1.18
+- To create pod and expose service </br> $ kubectl run httpd -o yaml --dry-run=client --image=httpd:alpine --port=80 --expose 
