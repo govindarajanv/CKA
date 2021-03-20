@@ -35,6 +35,14 @@
 - Edit nginx pod </br> $ k edit pod nginx
 - To taint a node </br> $ k taint node <nodename> key=value:effect   # effect NoSchedule
 - To untaint a node </br> $ k taint node <nodename> key=value:effect-
+- Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
+- To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 toelrations
+- Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
+- Continuously inquire a pod </br> $ watch "kubectl get pods" 
+- Inquire process at pod and node </br> $ k top node 01 </br> $ k top nginx
+- Get Rollout state of a deployment </br> $ k rollout status deployment/deployment-name
+- Get Rollout history of a deployment </br> $ k rollout history deployment/deployment-name
+- Rollback a deployment </br> $ k rollout undo deployment/deployment-name
 - To add tolerations, create pod yaml using declarative way and then copy three lines of containers section under spec and rename based on your requirements
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
 - Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 </br> alternatively update replicas to 5 in deployment manifest yaml
@@ -49,14 +57,7 @@
 - Create a pod and a service in one shot </br> $ k run httpd --image=httpd:alpine --port=80 --expose 
 - To replace a resource from yaml </br> $ k replace --force -f manifest.yml
 - To update a deployment with a new image </br> $ k set image deployment/deployment-name <container-name>=nginx:1.9.1
-- Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
-- To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 toelrations
-- Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
-- Continuously inquire a pod </br> $ watch "kubectl get pods" 
-- Inquire process at pod and node </br> $ k top node 01 </br> $ k top nginx
-- Get Rollout state of a deployment </br> $ k rollout status deployment/deployment-name
-- Get Rollout history of a deployment </br> $ k rollout history deployment/deployment-name
-- Rollback a deployment </br> $ k rollout undo deployment/deployment-name
+
 - Create a configMap from literal </br> $ k create configmap app-config --from-literal=APP_COLOR=blue
 - Create a configMap from file </br> $ k create configmap app-config --from-file=app-config.properities
 - Create a secret from literal </br> $ k create secret app-secret --from-literal=APP_COLOR=blue
