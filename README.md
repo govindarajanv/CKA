@@ -1,7 +1,7 @@
 # CKA
 My preparation for CKA
 
-## References
+## Useful Links
 
 - https://kubernetesbyexample.com/
 - https://labs.play-with-k8s.com/
