@@ -65,6 +65,7 @@
 - **Create a service account 'sa1'** </br> $ k create sa sa1 </br> $ TOKEN=$(kubectl describe secrets "$(kubectl describe serviceaccount govind -n default| grep -i Tokens | awk '{print $2}')" -n default | grep token: | awk '{print $2}') </br> $ k config set-credentials test-user --token=$TOKEN </br> $ kubectl config get-clusters </br> $ kubectl config get-users </br> $ kubectl config set-context test-user@kubernetes --cluster=kubernetes --user=test-user </br> $ kubectl config use-context test-user@kubernetes </br> $ kubectl get pods --all-namespaces # Please modify role and rolebinding for setting the required permissions Rolebinding subject can be users or service accounts
 - Check access </br> $ k auth can-i create deployments </br> $ k auth can-i delete nodes
 - Check access for other users </br> $ k auth can-i create deployments --as dev-user -n default
+- Get the list of pods as test-user </br> $ k get pods --as test-user -n default
 - Identify namespaced and non namespaced resources </br> $ k api-resources --namespaced=true
 - Inquire pod using jsonpath </br> $ k get pods -o=jsonpath='{ .items[0].spec.containers[0].image } {"\n"}{ .items[0].spec.containers[0].command }'   **# kubectl config view -h gives json path examples**
 - Inquire context using filtering functionality of json query path </br> $ k config view --kubeconfig=my-kube-config -o=jsonpath="{ .contexts[?(@.context.user=='aws-user')].name}"   
