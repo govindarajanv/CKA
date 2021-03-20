@@ -25,7 +25,7 @@
 - Execute a command on a pod </br> $ k exec nginx -- date -s '19 APR 2012 11:14:00'
 - Create an interactive shell on a pod </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh </br> $ k exec -it nginx /bin/bash
 - Get more details from nginx pod </br> $ k describe pod nginx
-- Get labels of a pod </br> $ k get pods --show-labels
+- Get labels of a pod and a node </br> $ k get pods --show-labels </br> $ k get nodes --show-labels
 - Get node details of all pods </br> $ k get pods -o wide
 - Get logs of a pod </br> $ k logs nginx
 - Get logs of a container in pod </br> $ k logs nginx -c container1
