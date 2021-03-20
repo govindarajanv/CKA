@@ -19,11 +19,11 @@
    - set tabstop=2 shiftwidth=2 expandtab ai  
    - if you already have tabs ":retab"
 - Connect to Kube API Server via proxy </br> $ k proxy # This lists API Groups
-- Get the version of KAS via http call </br? k proxy &; curl http://localhost:8001/version
-- How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver
+- Get the version of KAS via http call </br? k proxy &; curl http://localhost:8001/version; curl http://localhost:8001/api-resources
+- How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver </br> sudo journalctl -u kubelet -f
 - **Create a pod manifest for nginx  image with requests and limits and run a sleep command** </br> $ k run httpd -o yaml --dry-run=client --image=httpd --requests "cpu=100m,memory=256Mi" --limits "cpu=200m,memory=512Mi" --namespace=default --command --sh -c "sleep 300" > nginx.yml </br> kubectl run httpd -o yaml --dry-run=client --image=httpd --requests "cpu=100m,memory=150Mi" --limits "cpu=200m,memory=300Mi" --port=80 --hostport=80 --namespace=default -l name=httpd --restart=Never --command -- sleep 200
-- Execute a command on a pod </br> $ k exec -it nginx -- date -s '19 APR 2012 11:14:00'
-- Create an interactive shell on a pod </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh
+- Execute a command on a pod </br> $ k exec nginx -- date -s '19 APR 2012 11:14:00'
+- Create an interactive shell on a pod </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh </br> $ k exec -it nginx /bin/bash
 - Get more details from nginx pod </br> $ k describe pod nginx
 - Get labels of a pod </br> $ k get pods --show-labels
 - Get node details of all pods </br> $ k get pods -o wide
