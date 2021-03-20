@@ -2,7 +2,8 @@
 - Get kubectl version </br> $ k version --short
 - Get info about a k8s object </br> $ k explain pod </br> $ k explain pod.spec
 - Get yml structure of a k8s object </br> $ k explain pod --recursive
-- Get cluster info </br> $ k cluster-info </br> $ k cluster-info dump
+- Get cluster info </br> $ k cluster-info </br> 
+- Get detailed view of cluster information </br> $ k cluster-info dump
 - Get cofiguration </br> $ k config -h </br> k config view # View content of ~/.kube/config | /etc/kubernetes/admin.conf
 - Get the config view from custom kubeconfig </br> $ k config view --kubeconfig=/root/my-kube-config
 - Get contexts </br> $ k config get-contexts
