@@ -44,12 +44,12 @@
 - Get Rollout history of a deployment </br> $ kubectl apply -f nginx.yml --record </br> $ k rollout history deployment/deployment-name
 - Rollback a deployment </br> $ k rollout undo deployment/deployment-name
 - To add tolerations, create pod yaml using declarative way and then copy three lines of containers section under spec and rename based on your requirements
+- Create a namespace dummy </br> $ k create ns dummy
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
 - Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 </br> alternatively update replicas to 5 in deployment manifest yaml
 - Set a namespace dev as default namespace for the current context </br> $ k config set-context $(k config current-context) --namespace=dev
 - Change to a different context </br> $ k config use-context prod-user@production
 - Create/update/delete/apply resources from manifests </br> $k {create|replace|delete|apply} -f manifest.yml
-- Create a namespace dummy </br> $ k create ns dummy
 - Count a list of entries from kubectl command </br> $ k get pods --no-headers |wc -l
 - Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes </br> $ k expose pod nginx -o yaml --dry-run=client --port=80 --name nginx-service --type=NodePort </br> after port 80 add "nodePort: 30080"
 - Create a Service named nginx of type ClusterIP to expose pod nginx's port 6379 </br> $ k expose pod nginx -o yaml --dry-run=client --port=6379 --name nginx-service 
