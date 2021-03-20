@@ -51,9 +51,9 @@
 - Change to a different context </br> $ k config use-context prod-user@production
 - Create/update/delete/apply resources from manifests </br> $k {create|replace|delete|apply} -f manifest.yml
 - Count a list of entries from kubectl command </br> $ k get pods --no-headers |wc -l
-- Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes </br> $ k expose pod nginx -o yaml --dry-run=client --port=80 --name nginx-service --type=NodePort </br> after port 80 add "nodePort: 30080"
-- Create a Service named nginx of type ClusterIP to expose pod nginx's port 6379 </br> $ k expose pod nginx -o yaml --dry-run=client --port=6379 --name nginx-service 
-- Create a service named nginx-service for a deployment named nginx </br> $ k expose deployment nginx -o yaml --dry-run=client --port 80 --name nginx-service --type=NodePort   # Note to add nodePort in yaml before creating the service
+- **Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes** </br> $ k expose pod nginx -o yaml --dry-run=client --port=80 --name nginx-service --type=NodePort </br> after port 80 add "nodePort: 30080"
+- **Create a Service named nginx of type ClusterIP to expose pod nginx's port 6379** </br> $ k expose pod nginx -o yaml --dry-run=client --port=6379 --name nginx-service 
+- **Create a service named nginx-service for a deployment named nginx** </br> $ k expose deployment nginx -o yaml --dry-run=client --port 80 --name nginx-service --type=NodePort   # Note to add nodePort in yaml before creating the service
 - Create a pod and a service in one shot </br> $ k run httpd --image=httpd:alpine --port=80 --expose 
 - To replace a resource from yaml </br> $ k replace --force -f manifest.yml
 - To update a deployment with a new image </br> $ k set image deployment/deployment-name <container-name>=nginx:1.9.1
