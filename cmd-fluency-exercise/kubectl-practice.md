@@ -40,8 +40,8 @@
 - Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
 - Continuously inquire a pod </br> $ watch "kubectl get pods" 
 - Inquire process at pod and node </br> $ k top node 01 </br> $ k top nginx
-- Get Rollout state of a deployment </br> $ k rollout status deployment/deployment-name
-- Get Rollout history of a deployment </br> $ k rollout history deployment/deployment-name
+- Get Rollout state of a deployment </br> $ kubectl apply -f nginx.yml --record </br> $ k rollout status deployment/deployment-name
+- Get Rollout history of a deployment </br> $ kubectl apply -f nginx.yml --record </br> $ k rollout history deployment/deployment-name
 - Rollback a deployment </br> $ k rollout undo deployment/deployment-name
 - To add tolerations, create pod yaml using declarative way and then copy three lines of containers section under spec and rename based on your requirements
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
