@@ -10,7 +10,7 @@
 - Get users </br> $ k config get-users
 - Get all clusters </br> $ k config get-clusters
 - **Display events for a given namespace** </br> $ k get events -n default
-- view the events to get which scheduler picked it up </br> $ k get events
+- schedule a pod and view the events to get which scheduler picked it up </br> $ k run httpd --image=httpd && k get events
 - Set bash completion
    - open ~/.bashrc
    - type the following  </br>alias k='kubectl'</br>source<(kubectl bash completion|sed 's/kubectl/k/g')</br>export do='dry-run=client -o yaml'
