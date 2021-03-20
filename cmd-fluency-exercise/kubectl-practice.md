@@ -12,8 +12,8 @@
 - **Display events for a given namespace** </br> $ k get events -n default
 - schedule a pod and view the events to get which scheduler picked it up </br> $ k run httpd --image=httpd && k get events
 - Set bash completion
-   - open ~/.bashrc
-   - type the following  </br>alias k='kubectl'</br>source<(kubectl bash completion|sed 's/kubectl/k/g')</br>export do='dry-run=client -o yaml'
+   - echo "source <(kubectl completion bash)" >> ~/.bashrc
+   - echo "export do='-o yaml --dry-run=client'" >> ~/.bashrc
    - source ~/.bashrc
 - Set vimrc
    - set tabstop=2 shiftwidth=2 expandtab ai  
