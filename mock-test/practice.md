@@ -24,6 +24,8 @@
     - Answer: $ kubectl create secret generic --from-literal username=admin --from-literal password=dummy
 *  Use the above secret as an env variable in pod
     - Answer: as env variable (https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
+*   Create a new secret from file and map the created secret to a volume and map it to the pod
+    - Answer: https://kubernetes.io/docs/concepts/configuration/secret/
 * Create a pod nginx with below configurations <br> Limits: cpu 200m, Memory 300Mi, requests: cpu 100m, memory 200Mi and label: team=core-dev in dev namespace
     - Answer: </br> $ kubectl create ns dev </br> $ kubectl run nginx -o yaml --dry-run=client --image=nginx --requests "cpu=100m,memory=200Mi" --limits "cpu=200m,memory=300Mi" -l team=core-dev --namespace=dev
 * Create a pod with multi-containers in it  nginx, tomcat, redis 
@@ -60,6 +62,7 @@
         -   To display every node in an individual row, we have to use a loop to process node by node. Use {range .items[*]} …… {end} to loop through the list of items.
         -   Within the loop, directly refer the items from the looping node. For example, use {.metadata.name} under {range .items[*]} for referring name. Should not use {.items[*].metadata.name}.
         -   At the end of every iteration use {\”\n\”} for new line.
+* Create 
 ## References
 - WeMake - YouTube Channel
 - https://medium.com/@imarunrk/certified-kubernetes-administrator-cka-tips-and-tricks-part-5-869d947412c0
