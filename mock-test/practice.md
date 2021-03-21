@@ -1,6 +1,7 @@
 ## Practice Questions
 
 * Perform ETCD backup and restore
+    -   ETCDCTL_API=3 etcdctl — endpoints=[ENDPOINT] — cacert=[CA CERT] — cert=[ETCD SERVER CERT] — key=[ETCD SERVER KEY] snapshot save [BACKUP FILE NAME]
 * Setup 2 nodes k8s clusters
 * Upgrade node
 * We should use Init Container to create a file named “sharedfile.txt” under the “work” directory and the application container should check if the file exists and sleep for a while. If the file does not exist the application container should exit.
@@ -44,6 +45,7 @@
 * Static Pod creation by kubelet
     -   Create a static pod on worker node
         -   Answer: 
+            -   Sometimes there will be a few hints about static pod if there is no explicit mention like a pod on worker node by placing in a path like /etc/kubernetes/manifests
             -   create a static pod manifest in master node. Check kubelet config file and 'staticPodPath' configuration path (usually /etc/kubernetes/manifests)
             -   create a static pod on worker node. Create pod manifest in master node. Do scp to worker node. check the configuration path for staticPodPath, update if required. Restart kubelet service (enable). $ kubectl get pods -w on master, you should be able to see static pods.
         -   
