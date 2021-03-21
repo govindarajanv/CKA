@@ -18,7 +18,12 @@
     - Update the image of the above deployment to nginx:1.18.0 and try to record the deployments
     - Check rollout history
     - Rollback to original nginx image in the deployment
-* Create a pod with image redis and expose the pod as a service. Also expose the service for the deployment in the previous question with type nodeport on port 30080
-* 
+* Create a pod with image redis and expose the pod as a service. 
+    - Also expose the service for the deployment in the previous question with type nodeport on port 30080
+    - Create a pod with image redis with port and target port as 6379
+    - Get the list of pods related to the service redis
+* Check DNS record of redis pod and store in a file /tmp/dns_redis_pods.txt
+    -   $ kubectl get pod redis -n dev -o wide  # Get ip address 10.1.15.5
+    -   $ kubectl run busybox --image=busybox --restart=Never --rm -it -- nslookup 10-1-15-5.default.pod
 ## References
 - WeMake - YouTube Channel
