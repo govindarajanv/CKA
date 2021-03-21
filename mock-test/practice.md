@@ -14,6 +14,7 @@
         - $ kubectl run nginx -o yaml --dry-run=client --image=nginx > multipod.yml
         - Append additional entries of second and third containers and do kubectl apply
 * Create a deployment webapp with image nginx and replicas 6 and place the file in /tmp directory
+    - Scale down the deployments to 4
     - Update the image of the above deployment to nginx:1.18.0 and try to record the deployments
     - Check rollout history
     - Rollback to original nginx image in the deployment
