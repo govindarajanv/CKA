@@ -1,6 +1,8 @@
 ## Practice Questions
 
 * Perform ETCD backup and restore
+* Setup 2 nodes k8s clusters
+* Upgrade node
 * Add an init container which should create a file. If that file exists, container should run
     -  Answer: https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 *  Create secret from literals (username=admin, password=dummy)
@@ -25,5 +27,11 @@
 * Check DNS record of redis pod and store in a file /tmp/dns_redis_pods.txt
     -   $ kubectl get pod redis -n dev -o wide  # Get ip address 10.1.15.5
     -   $ kubectl run busybox --image=busybox --restart=Never --rm -it -- nslookup 10-1-15-5.default.pod
+* Static Pod creation by kubelet
+    -   Create a static pod on worker node
+        -   Answer: 
+            -   create a static pod manifest in master node. Check kubelet config file and 'staticPodPath' configuration path (usually /etc/kubernetes/manifests)
+            -   create a static pod on worker node. Create pod manifest in master node. Do scp to worker node. check the configuration path for staticPodPath, update if required. Restart kubelet service (enable). $ kubectl get pods -w on master, you should be able to see static pods.
+        -   
 ## References
 - WeMake - YouTube Channel
