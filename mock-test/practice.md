@@ -48,7 +48,18 @@
             -   Sometimes there will be a few hints about static pod if there is no explicit mention like a pod on worker node by placing in a path like /etc/kubernetes/manifests
             -   create a static pod manifest in master node. Check kubelet config file and 'staticPodPath' configuration path (usually /etc/kubernetes/manifests)
             -   create a static pod on worker node. Create pod manifest in master node. Do scp to worker node. check the configuration path for staticPodPath, update if required. Restart kubelet service (enable). $ kubectl get pods -w on master, you should be able to see static pods.
-        -   
+* JSONPATH Exercises
+    -   Print the image of containers used by all pods across namespace
+        -   $ kubectl get pod -o jsonpath=’{.items[*].metadata.name}{.items[*].status.conditions[?(@.type==”Ready”)].lastTransitionTime}’
+    -   List all pods name, lastProbeTime from status where the type is ready.
+        -   $ kubectl get nodes -o jsonpath=”{range .items[*]}{.metadata.name} {.spec.taints[*].effect}{\”\n\”}{end}” | grep -v NoSchedule
+        -   $ kubectl get node -o custom-columns=NAME:.metadata.name,TAINT:.spec.taints[*].effect | grep -v NoSchedule
+    -   Get all persistence volume from kube-system namespace ordered with capacity
+        -   $ kubectl get pv -n kube-system — sort-by=.spec.capacity.storage
+    -   Tips: 
+        -   To display every node in an individual row, we have to use a loop to process node by node. Use {range .items[*]} …… {end} to loop through the list of items.
+        -   Within the loop, directly refer the items from the looping node. For example, use {.metadata.name} under {range .items[*]} for referring name. Should not use {.items[*].metadata.name}.
+        -   At the end of every iteration use {\”\n\”} for new line.
 ## References
 - WeMake - YouTube Channel
 - https://medium.com/@imarunrk/certified-kubernetes-administrator-cka-tips-and-tricks-part-5-869d947412c0
