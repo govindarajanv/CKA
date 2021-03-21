@@ -4,6 +4,20 @@
 * Setup 2 nodes k8s clusters
 * Upgrade node
 * We should use Init Container to create a file named “sharedfile.txt” under the “work” directory and the application container should check if the file exists and sleep for a while. If the file does not exist the application container should exit.
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+        name: init-container-test
+    spec:
+        containers:
+        - name: application-container
+          image: alpine
+          command: ['sh', '-c', 'if [ -f /work/sharedfile.txt ]; then sleep 99999; else exit; fi']
+          volumeMounts:
+          - name: workdir-volume
+            mountPath: /work
+    ```
     -  Answer: https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 *  Create secret from literals (username=admin, password=dummy)
     - Answer: $ kubectl create secret generic --from-literal username=admin --from-literal password=dummy
