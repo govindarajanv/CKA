@@ -64,4 +64,5 @@
         -   At the end of every iteration use {\”\n\”} for new line.
 ## References
 - WeMake - YouTube Channel
+- Sagar Reddy - YouTube Channel
 - https://medium.com/@imarunrk/certified-kubernetes-administrator-cka-tips-and-tricks-part-5-869d947412c0
