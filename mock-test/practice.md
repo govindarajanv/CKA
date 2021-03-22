@@ -3,7 +3,7 @@
 1. Perform ETCD backup and restore
     -   ETCDCTL_API=3 etcdctl — endpoints=[ENDPOINT] — cacert=[CA CERT] — cert=[ETCD SERVER CERT] — key=[ETCD SERVER KEY] snapshot save [BACKUP FILE NAME]
 1. Setup 2 nodes k8s clusters
-1. Upgrade node
+1. Upgrade the current version of kubernetes from 1.18 to 1.19.0 exactly using the kubeadm utility. Make sure that the upgrade is carried out one node at a time starting with the master node. 
 1. We should use Init Container to create a file named “sharedfile.txt” under the “work” directory and the application container should check if the file exists and sleep for a while. If the file does not exist the application container should exit.
     ```yaml
     apiVersion: v1
