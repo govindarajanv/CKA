@@ -3,7 +3,7 @@ My preparation for CKA
 
 ## Tips
 - The below link will come in handy during the exam </br> https://kubernetes.io/docs/reference/kubectl/cheatsheet/ 
-- 
+- $ kubectl explain pv --recursive| less  # pv is a just an example
 
 ## Useful Links
 
