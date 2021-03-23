@@ -1,6 +1,10 @@
 # CKA
 My preparation for CKA
 
+## Tips
+- The below link will come in handy during the exam </br> https://kubernetes.io/docs/reference/kubectl/cheatsheet/ 
+- 
+
 ## Useful Links
 
 - https://kubernetesbyexample.com/
