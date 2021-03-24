@@ -93,7 +93,11 @@
     -   Service
         -   Incorrect configuration including pod selector
         -   Incorrect namespace
+1.  Create a busybox container to do name resolution on a service and check connectivity to that service on the related port
+    -   $ kubectl run name-resolver --image=busybox:1.28 --rm -it -- nslookup <service name>
+    -   $ kubectl run name-resolver --image=busybox:1.28 --rm -it -- nc -vz <service name> <port>
 ## References
 - WeMake - YouTube Channel
 - Sagar Reddy - YouTube Channel
 - https://medium.com/@imarunrk/certified-kubernetes-administrator-cka-tips-and-tricks-part-5-869d947412c0
+
