@@ -71,6 +71,22 @@
         -   To display every node in an individual row, we have to use a loop to process node by node. Use {range .items[*]} …… {end} to loop through the list of items.
         -   Within the loop, directly refer the items from the looping node. For example, use {.metadata.name} under {range .items[*]} for referring name. Should not use {.items[*].metadata.name}.
         -   At the end of every iteration use {\”\n\”} for new line.
+1. Troubleshooting
+    -   Worker node in 'Not Ready' state
+        -   kubelet might have been stopped and disabled
+    -   Controlplane
+        -   CNI plugin not installed
+        -   Core DNS pods in error so name resolution does not happen
+        -   Replication does not work as Controller Manager pods not in running state
+        -   Pods in 'Pending' state due to kube-scheduler pods not in running state
+    -   Pods
+        -   kubectl describe and kubectl logs can help 
+            -   Incorrect Commands
+            -   Incorrect Image
+            -   Incorrect namespace
+    -   Service
+        -   Incorrect configuration including pod selector
+        -   Incorrect namespace
 ## References
 - WeMake - YouTube Channel
 - Sagar Reddy - YouTube Channel
