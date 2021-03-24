@@ -2,6 +2,23 @@
 
 1. Perform ETCD backup and restore
     -   ETCDCTL_API=3 etcdctl — endpoints=[ENDPOINT] — cacert=[CA CERT] — cert=[ETCD SERVER CERT] — key=[ETCD SERVER KEY] snapshot save [BACKUP FILE NAME]
+    -   Method 1
+        -   if etcd runs as a pod
+            - $ export ETCDCTL_API=3
+            - $ etcdctl snapshot save /path-to-backup.db --cacert=etcd-ca.pem --cert=etcd-server.crt --endpoints=https://ip:2379 --key=etcd-server.key # Get these values fromthe running pod or static pod configurations
+    -   Method 2
+        - if etcd is a separate server and running as a service
+            - $ export ETCDCTL_API=3
+            - $ etcdctl member list --cacert=etcd-ca.pem --cert=etcd-server.crt --endpoints=https://ip:2379 --key=etcd-server.key # To get the members
+            - $ etcdctl snapshot get cluster.name --cacert=etcd-ca.pem --cert=etcd-server.crt --endpoints=https://ip:2379 --key=etcd-server.key # To get the members
+            - $ etcdctl snapshot save /path-to-backup.db --cacert=etcd-ca.pem --cert=etcd-server.crt --endpoints=https://ip:2379 --key=etcd-server.key # Get these values fromthe running pod or static pod configurations
+            - $ sudo systemctl stop etcd
+            - $ sudo rm -rf /var/lib/etcd
+            - $ etcdctl snapshot restore /path-to-backup.db --data-dir="/var/lib/etcd"
+            - $ sudo chown -R etcd:etcd /var/lib/etcd
+            - $ sudo systemctl start etcd
+            - $ etcdctl snapshot get cluster.name --cacert=etcd-ca.pem --cert=etcd-server.crt --endpoints=https://ip:2379 --key=etcd-server.key # To get the members
+            
 1. Setup 2 nodes k8s clusters
 1. Upgrade the current version of kubernetes from 1.18 to 1.19.0 exactly using the kubeadm utility. Make sure that the upgrade is carried out one node at a time starting with the master node. 
 1. We should use Init Container to create a file named “sharedfile.txt” under the “work” directory and the application container should check if the file exists and sleep for a while. If the file does not exist the application container should exit.
