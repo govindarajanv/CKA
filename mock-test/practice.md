@@ -20,8 +20,10 @@
             - $ etcdctl snapshot get cluster.name --cacert=etcd-ca.pem --cert=etcd-server.crt --endpoints=https://ip:2379 --key=etcd-server.key # To get the members
             
 1. Setup 2 nodes k8s clusters
-1. Upgrade the current version of kubernetes from 1.18 to 1.19.0 exactly using the kubeadm utility. Make sure that the upgrade is carried out one node at a time starting with the master node. 
-1. We should use Init Container to create a file named “sharedfile.txt” under the “work” directory and the application container should check if the file exists and sleep for a while. If the file does not exist the application container should exit.
+    -   https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+3. Upgrade the current version of kubernetes from 1.18 to 1.19.0 exactly using the kubeadm utility. Make sure that the upgrade is carried out one node at a time starting with the master node. 
+    -   Refer https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+4. We should use Init Container to create a file named “sharedfile.txt” under the “work” directory and the application container should check if the file exists and sleep for a while. If the file does not exist the application container should exit.
     ```yaml
     apiVersion: v1
     kind: Pod
