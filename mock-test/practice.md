@@ -59,7 +59,10 @@
 1. Create a namespace called finance, create a network policy, that blocks all traffic to pods in finance namespace except for traffic from pods in the same namespace on port 8080
     -   Answer: label namespace (as we would be using namespace label selector. To select all pods in the namespace, pod selector should have empty braces {}. Use namespace selector in ingress or egress (ipblock, pod selector and namespace selector are the options available)
     -   podSelector: {} means all pods will be selected
-1. JSONPATH Exercises
+1. Make a worker node unschedulable and drain the pods
+    -   $ kubectl cordon worker01
+    -   $ kubectl drain worker01 --ignore-daemonsets
+3. JSONPATH Exercises
     -   Print the image of containers used by all pods across namespace
         -   $ kubectl get pod -o jsonpath=’{.items[*].metadata.name}{.items[*].status.conditions[?(@.type==”Ready”)].lastTransitionTime}’
     -   List all pods name, lastProbeTime from status where the type is ready.
@@ -71,7 +74,7 @@
         -   To display every node in an individual row, we have to use a loop to process node by node. Use {range .items[*]} …… {end} to loop through the list of items.
         -   Within the loop, directly refer the items from the looping node. For example, use {.metadata.name} under {range .items[*]} for referring name. Should not use {.items[*].metadata.name}.
         -   At the end of every iteration use {\”\n\”} for new line.
-1. Troubleshooting
+4. Troubleshooting
     -   Worker node in 'Not Ready' state
         -   kubelet might have been stopped and disabled
     -   Controlplane
