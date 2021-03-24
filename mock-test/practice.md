@@ -50,7 +50,8 @@
             -   Sometimes there will be a few hints about static pod if there is no explicit mention like a pod on worker node by placing in a path like /etc/kubernetes/manifests
             -   create a static pod manifest in master node. Check kubelet config file and 'staticPodPath' configuration path (usually /etc/kubernetes/manifests)
             -   create a static pod on worker node. Create pod manifest in master node. Do scp to worker node. check the configuration path for staticPodPath, update if required. Restart kubelet service (enable). $ kubectl get pods -w on master, you should be able to see static pods.
-1. Daemonsets with a twist due to Taint and Tolerations. Create a pod with image redis with “temporary” directory that shares the pod’s lifetime on a given path /share/redis.
+1. Daemonsets with a twist due to Taint and Tolerations. 
+2. Create a pod with image redis with “temporary” directory that shares the pod’s lifetime on a given path /share/redis.
     -   Answer: Temporary here means empty directory. Create a hostpath persistent volume, create PVC, create pod with that PVC mounted on to it.
 1. Create a network policy that denies access to the payroll pod in the accounting namespace
     -   Answer: Refer documentation, add egress and Ingress with pod selector
