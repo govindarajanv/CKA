@@ -37,6 +37,7 @@
     - Update the image of the above deployment to nginx:1.18.0 and try to record the deployments
     - Check rollout history
     - Rollback to original nginx image in the deployment
+    - Expose the deployment as a service on port 80
 1. Create a pod with image redis and expose the pod as a service. 
     - Also expose the service for the deployment in the previous question with type nodeport on port 30080
     - Create a pod with image redis with port and target port as 6379
