@@ -49,6 +49,7 @@
     -   Create a static pod on worker node
         -   Answer: 
             -   Sometimes there will be a few hints about static pod if there is no explicit mention like a pod on worker node by placing in a path like /etc/kubernetes/manifests
+            -   $ ps -aux|grep kubelet # gives config file /var/lib/kubelet/config.yaml
             -   create a static pod manifest in master node. Check kubelet config file and 'staticPodPath' configuration path (usually /etc/kubernetes/manifests)
             -   create a static pod on worker node. Create pod manifest in master node. Do scp to worker node. check the configuration path for staticPodPath, update if required. Restart kubelet service (enable). $ kubectl get pods -w on master, you should be able to see static pods.
 1. Daemonsets with a twist due to Taint and Tolerations. 
