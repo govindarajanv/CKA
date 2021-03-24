@@ -39,7 +39,7 @@
             mountPath: /work
     ```
     -  Answer: https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
-1.  Create secret from literals (username=admin, password=dummy) and use the above secret as an env variable in pod
+1.  Create a new secret from literals (username=admin, password=dummy) and use the above secret as an env variable in pod
     - Answer: 
         - $ kubectl create secret generic --from-literal username=admin --from-literal password=dummy
         - as env variable (https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
