@@ -97,6 +97,18 @@
     -   $ kubectl run name-resolver --image=busybox:1.28 
     -   $ kubectl exec name-resolver -- nslookup \<service name\>
     -   $ kubectl exec name-resolver -- nc -vz \<service name\> \<port\>
+1.  Use certificate and key for the user to create CSR, approve the certificate. Create the required role and rolebinding
+    -   $ cat abc.csr | base64| tr -d "\n" => requests key in CertificateSigningRequest
+    -   $ kubectl certificate approve \<csr-name\>
+    -   $ kubectl create role rolename --resource=pods --verb=create,list,update,delete --namespace=my-ns
+    -   $ kubectl create rolebinding rolebindingname --role=rolename --user=abc --namespace=my-ns
+1. Create a new service account with the name pvaccess. Grant this Service account access to list all PersistentVolumes in the cluster by creating an appropriate cluster role called pvaccess-role and ClusterRoleBinding called pvaccess-role-binding.
+Next, create a pod called pvaccess with the image: redis and serviceAccount: pvaccess in the default namespace
+    -   $ kubectl create sa pvaccess
+    -   $ kubectl create clusterrole pvaccess-role --resource=persistentvolumes --verb=list
+    -   $ kubectl create clusterrolebinding pvaccess-role-binding --clusterrole=pvaccess-role --serviceaccount=default:pvaccess
+    -   $ create a pod yaml and add serviceaccount in yml and create the pod
+    -   whenever a pod is created, secret will be created with sa account. Inspec the pod to confirm
 ## References
 - WeMake - YouTube Channel
 - Sagar Reddy - YouTube Channel
