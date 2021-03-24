@@ -52,17 +52,19 @@
             -   create a static pod manifest in master node. Check kubelet config file and 'staticPodPath' configuration path (usually /etc/kubernetes/manifests)
             -   create a static pod on worker node. Create pod manifest in master node. Do scp to worker node. check the configuration path for staticPodPath, update if required. Restart kubelet service (enable). $ kubectl get pods -w on master, you should be able to see static pods.
 1. Daemonsets with a twist due to Taint and Tolerations. 
-2. Create a pod with image redis with “temporary” directory that shares the pod’s lifetime on a given path /share/redis.
+    -   if daemonsets need to be created on all nodes (toleration for the taint on master node is required)
+    -   if daemonsets need to be created only on worker nodes (no toleration is required to be set up)
+3. Create a pod with image redis with “temporary” directory that shares the pod’s lifetime on a given path /share/redis.
     -   Answer: Temporary here means empty directory. Create a hostpath persistent volume, create PVC, create pod with that PVC mounted on to it.
-1. Create a network policy that denies access to the payroll pod in the accounting namespace
+4. Create a network policy that denies access to the payroll pod in the accounting namespace
     -   Answer: Refer documentation, add egress and Ingress with pod selector based on labels
-1. Create a namespace called finance, create a network policy, that blocks all traffic to pods in finance namespace except for traffic from pods in the same namespace on port 8080
+5. Create a namespace called finance, create a network policy, that blocks all traffic to pods in finance namespace except for traffic from pods in the same namespace on port 8080
     -   Answer: label namespace (as we would be using namespace label selector. To select all pods in the namespace, pod selector should have empty braces {}. Use namespace selector in ingress or egress (ipblock, pod selector and namespace selector are the options available)
     -   podSelector: {} means all pods will be selected
-1. Make a worker node unschedulable and drain the pods
+6. Make a worker node unschedulable and drain the pods
     -   $ kubectl cordon worker01
     -   $ kubectl drain worker01 --ignore-daemonsets
-3. JSONPATH Exercises
+7. JSONPATH Exercises
     -   Print the image of containers used by all pods across namespace
         -   $ kubectl get pod -o jsonpath=’{.items[*].metadata.name}{.items[*].status.conditions[?(@.type==”Ready”)].lastTransitionTime}’
     -   List all pods name, lastProbeTime from status where the type is ready.
@@ -74,7 +76,7 @@
         -   To display every node in an individual row, we have to use a loop to process node by node. Use {range .items[*]} …… {end} to loop through the list of items.
         -   Within the loop, directly refer the items from the looping node. For example, use {.metadata.name} under {range .items[*]} for referring name. Should not use {.items[*].metadata.name}.
         -   At the end of every iteration use {\”\n\”} for new line.
-4. Troubleshooting
+8. Troubleshooting
     -   Worker node in 'Not Ready' state
         -   kubelet might have been stopped and disabled
     -   Controlplane
