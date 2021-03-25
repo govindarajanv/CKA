@@ -79,7 +79,7 @@
 4. Create a network policy that denies access to the payroll pod in the accounting namespace **beware of namespace**
     -   Answer: Refer documentation, add egress and Ingress with pod selector based on labels
 5. Create a namespace called finance, create a network policy, that blocks all traffic to pods in finance namespace except for traffic from pods in the same namespace on port 8080
-    -   Answer: label namespace (as we would be using namespace label selector. To select all pods in the namespace, pod selector should have empty braces {}. Use namespace selector in ingress or egress (ipblock, pod selector and namespace selector are the options available)
+    -   Answer: **label namespace** (as we would be using namespace label selector. To select all pods in the namespace, pod selector should have empty braces {}. Use namespace selector in ingress or egress (ipblock, pod selector and namespace selector are the options available)
     -   podSelector: {} means all pods will be selected
 6. Make a worker node unschedulable and drain the pods
     -   $ kubectl cordon worker01
