@@ -51,6 +51,7 @@
     - Answer: 
         - $ kubectl run nginx -o yaml --dry-run=client --image=nginx > multipod.yml
         - Append additional entries of second and third containers and do kubectl apply
+        - **Note:** remember to share volume emptyDir to access logs/data between side car containers
 1. Create a deployment webapp with image nginx and replicas 6 and place the file in /tmp directory
     - Scale down the deployments to 4
     - Update the image of the above deployment to nginx:1.18.0 and try to record the deployments
