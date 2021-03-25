@@ -132,4 +132,6 @@ Next, create a pod called pvaccess with the image: redis and serviceAccount: pva
 - WeMake - YouTube Channel
 - Sagar Reddy - YouTube Channel
 - https://medium.com/@imarunrk/certified-kubernetes-administrator-cka-tips-and-tricks-part-5-869d947412c0
+- Linux Academy
+- Mumshad (KodeKloud)
 
