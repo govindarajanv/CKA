@@ -76,7 +76,7 @@
     -   if daemonsets need to be created only on worker nodes (no toleration is required to be set up)
 3. Create a pod with image redis with “temporary” directory that shares the pod’s lifetime on a given path /share/redis.
     -   Answer: Temporary here means empty directory. Create a hostpath persistent volume, create PVC, create pod with that PVC mounted on to it.
-4. Create a network policy that denies access to the payroll pod in the accounting namespace
+4. Create a network policy that denies access to the payroll pod in the accounting namespace **beware of namespace**
     -   Answer: Refer documentation, add egress and Ingress with pod selector based on labels
 5. Create a namespace called finance, create a network policy, that blocks all traffic to pods in finance namespace except for traffic from pods in the same namespace on port 8080
     -   Answer: label namespace (as we would be using namespace label selector. To select all pods in the namespace, pod selector should have empty braces {}. Use namespace selector in ingress or egress (ipblock, pod selector and namespace selector are the options available)
