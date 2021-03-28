@@ -7,8 +7,8 @@
 
   - network-plugin: The network plugin to use from cni-bin-dir. It must match the name reported by a plugin probed from the plugin directory.
 - check if coreDNS pods are in running status if not
-  - check if CNI plugin is installed
-- if CoreDNS pods and the kube-dns service are working fine, check the kube-dns service has valid endpoints $ kubectl -n kube-system get ep kube-dns
+  - **check if CNI plugin is installed**
+- if CoreDNS pods and the kube-dns service are working fine, check the **kube-dns service has valid endpoints** $ kubectl -n kube-system get ep kube-dns
   - If there are no endpoints for the service, inspect the service and make sure it uses the correct selectors and ports
 - In a cluster configured with kubeadm, you can find kube-proxy as a daemonset
   - Get status of kube-proxy
