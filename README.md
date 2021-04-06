@@ -1,3 +1,5 @@
+[![HitCount](http://hits.dwyl.com/govindarajanv/CKA.svg)](http://hits.dwyl.com/govindarajanv/CKA)
+
 # CKA
 My preparation for CKA
 
