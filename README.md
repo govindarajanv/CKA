@@ -1,4 +1,5 @@
 [![HitCount](http://hits.dwyl.com/govindarajanv/CKA.svg)](http://hits.dwyl.com/govindarajanv/CKA)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # CKA
 My preparation for CKA
