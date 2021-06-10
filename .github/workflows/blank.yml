@@ -34,4 +34,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          echo ${{ github.event.inputs }} 
+      - name: Dump GitHub context
+        env:
+         GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+         echo "$GITHUB_CONTEXT"
