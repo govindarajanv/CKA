@@ -18,5 +18,3 @@ My preparation for CKA
 - https://www.katacoda.com/courses/kubernetes/playground
 - https://kubernetes.io/docs/tasks/
 - https://github.com/kelseyhightower/kubernetes-the-hard-way
-
-
