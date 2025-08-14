@@ -28,20 +28,20 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
  -c "sleep 300" > pod.yaml </br> $ k set resources -f pod.yaml --requests=cpu=100m,memory=256Mi --limits=cpu=200m,memory=512Mi --local -o yaml > pod-with-limits.yaml 
 - Execute a command on a pod </br> $ k exec nginx -- date -s '19 APR 2012 11:14:00'
 - Create a pod with only passing arguments to a command without passing any commands </br> $ kubectl run nginx -o yaml --dry-run=client --image=nginx -- "--color=pink" 
-- **Create an interactive shell on a pod** </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh </br> $ k exec -it nginx /bin/bash
+- **Create an interactive shell on a pod** </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh </br> $ k exec -it httpd -- /bin/bash
 - Get more details from nginx pod </br> $ k describe pod nginx
 - Get labels of a pod and a node </br> $ k get pods --show-labels </br> $ k get nodes --show-labels
 - Get node details of all pods </br> $ k get pods -o wide
 - Get logs of a pod </br> $ k logs nginx
 - Get logs of a container in pod </br> $ k logs nginx -c container1
-- Get logs of previous version of pod </br> $ k logs -f --previous
+- Get logs of previous version of pod </br> $ k logs httpd -f --previous
 - Continuously stream logs </br> $ k logs -f nginx [container]
 - Select a pod matching labels env=prod and bu=finance </br> $ k get pods -l env=prod,bu=finance
 - Edit nginx pod </br> $ k edit pod nginx
 - To taint a node </br> $ k taint node <nodename> key=value:effect   # effect NoSchedule
 - To untaint a node </br> $ k taint node <nodename> key=value:effect-
 - Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
-- To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 toelrations
+- To check all available options for tolerations </br> $ k explain pod --recursive | grep -A5 tolerations
 - Label nodes with key as size and value as large </br> $ k label nodes node01 size=large
 - Continuously inquire a pod </br> $ watch "kubectl get pods" 
 - Inquire process at pod and node </br> $ k top node 01 </br> $ k top nginx
@@ -51,17 +51,17 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
 - To add tolerations, create pod yaml using declarative way and then copy three lines of containers section under spec and rename based on your requirements
 - Create a namespace dummy </br> $ k create ns dummy
 - Create a deployment for nginx with 3 replicas in prod namespace </br> $ k create ns prod </br> $ k create deployment nginx1 -o yaml --dry-run=client --image=nginx --replicas=3 --namespace=prod > mydeploy.yml </br> $ k create -f mydeploy.yml
-- Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 </br> alternatively update replicas to 5 in deployment manifest yaml
+- Scale the above deployment to 5 </br> $ kubectl scale deployment nginx --replicas=3 -n prod</br> alternatively update replicas to 5 in deployment manifest yaml
 - Set a namespace dev as default namespace for the current context </br> $ k config set-context $(k config current-context) --namespace=dev
 - Change to a different context </br> $ k config use-context prod-user@production
 - Create/update/delete/apply resources from manifests </br> $k {create|replace|delete|apply} -f manifest.yml
 - Count a list of entries from kubectl command </br> $ k get pods --no-headers |wc -l
-- **Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes** </br> k create svc nodeport webapp-service --tcp=8080:8080 --node-port=30080 --dry-run=client -o yaml </br>Modify the selector and its labels in the resultant yaml </br> $ k expose pod nginx -o yaml --dry-run=client --port=80 --name nginx-service --type=NodePort </br> after port 80 add "nodePort: 30080"
+- **Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes** </br> k create svc nodeport webapp-service --tcp=8080:8080 --node-port=30080 --dry-run=client -o yaml </br>Modify the selector and its labels in the resultant yaml </br> $ k expose pod httpd-test -o yaml --dry-run=client --port=80 --name nginx-service --type=NodePort </br> after port 80 add "nodePort: 30080"
 - **Create a Service named nginx of type ClusterIP to expose pod nginx's port 6379** </br> $ k expose pod nginx -o yaml --dry-run=client --port=6379 --name nginx-service 
 - **Create a service named nginx-service for a deployment named nginx** </br> $ k expose deployment nginx -o yaml --dry-run=client --port 80 --name nginx-service --type=NodePort   # Note to add nodePort in yaml before creating the service
 - Create a pod and a service in one shot </br> $ k run httpd --image=httpd:alpine --port=80 --expose 
 - To replace a resource from yaml </br> $ k replace --force -f manifest.yml
-- **To update a deployment with a new image** </br> $ k set image deployment nginx \<containername\>=nginx:latest
+- **To update a deployment with a new image** </br> $ k set image deployment httpd-deploy httpd=httpd:latest
 - Create a configMap from literal </br> $ k create cm my-cm --from-literal env=prod --from-literal color=blue
 - Create a configMap from file </br> $ k create configmap app-config --from-file=app-config.properities
 - Create a secret from literal </br> $ k create secret app-secret --from-literal=APP_COLOR=blue
