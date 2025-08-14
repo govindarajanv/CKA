@@ -9,6 +9,8 @@
 - Get contexts </br> $ k config get-contexts
 - Get users </br> $ k config get-users
 - Get all clusters </br> $ k config get-clusters
+- Get version </br> $ k api-resources | grep replicaset
+- Get version </br> $ k explain replicaset | grep VERSION
 - **Display events for a given namespace** </br> $ k get events -n default
 - schedule a pod and view the events to get which scheduler picked it up </br> $ k run httpd --image=httpd && k get events
 - **Set bash completion**
