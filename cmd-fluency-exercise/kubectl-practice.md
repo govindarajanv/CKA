@@ -40,6 +40,7 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
 - Continuously stream logs </br> $ k logs -f nginx [container]
 - Select a pod matching labels env=prod and bu=finance </br> $ k get pods -l env=prod,bu=finance
 - Edit nginx pod </br> $ k edit pod nginx
+- Check if a node is tainted </br> $ k describe node node01 | grep -i taint
 - To taint a node </br> $ k taint node <nodename> key=value:effect   # effect NoSchedule
 - To untaint a node </br> $ k taint node <nodename> key=value:effect-
 - Taint a node with taint effect NoSchedule </br> $ k taint nodes node01 key=app:NoSchedule
