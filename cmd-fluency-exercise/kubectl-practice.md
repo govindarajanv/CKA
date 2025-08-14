@@ -28,10 +28,12 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
  -c "sleep 300" > pod.yaml </br> $ k set resources -f pod.yaml --requests=cpu=100m,memory=256Mi --limits=cpu=200m,memory=512Mi --local -o yaml > pod-with-limits.yaml 
 - Execute a command on a pod </br> $ k exec nginx -- date -s '19 APR 2012 11:14:00'
 - Create a pod with only passing arguments to a command without passing any commands </br> $ kubectl run nginx -o yaml --dry-run=client --image=nginx -- "--color=pink" 
+- Create a pod running on the port 8080 </br> $kubectl run custom-nginx --image=nginx --port=8080
 - **Create an interactive shell on a pod** </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh </br> $ k exec -it httpd -- /bin/bash
 - Get more details from nginx pod </br> $ k describe pod nginx
 - Get labels of a pod and a node </br> $ k get pods --show-labels </br> $ k get nodes --show-labels
 - Get node details of all pods </br> $ k get pods -o wide
+- Get pods matching labels </br> $ k get pods -l env=prod,bu=finance,tier=frontend
 - Get logs of a pod </br> $ k logs nginx
 - Get logs of a container in pod </br> $ k logs nginx -c container1
 - Get logs of previous version of pod </br> $ k logs httpd -f --previous
