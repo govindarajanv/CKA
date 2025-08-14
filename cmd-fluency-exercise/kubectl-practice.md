@@ -1,7 +1,7 @@
 - Set alias for kubectl </br>$ alias k=kubectl
 - Get kubectl version </br> $ k version --short
 - Get info about a k8s object </br> $ k explain pod </br> $ k explain pod.spec
-- Get yml structure of a k8s object </br> $ k explain pod --recursive
+- Get yml structure of a k8s object </br> $ k explain pod --recursive </br> $ k explain pod | head -n3
 - Get cluster info </br> $ k cluster-info </br> 
 - Get detailed view of cluster information </br> $ k cluster-info dump
 - Get configuration </br> $ k config -h </br> k config view # View content of ~/.kube/config | /etc/kubernetes/admin.conf
