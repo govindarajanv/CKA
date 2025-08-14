@@ -61,7 +61,7 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
 - **Create a service named nginx-service for a deployment named nginx** </br> $ k expose deployment nginx -o yaml --dry-run=client --port 80 --name nginx-service --type=NodePort   # Note to add nodePort in yaml before creating the service
 - Create a pod and a service in one shot </br> $ k run httpd --image=httpd:alpine --port=80 --expose 
 - To replace a resource from yaml </br> $ k replace --force -f manifest.yml
-- **To update a deployment with a new image** </br> $ k set image deployment httpd-deploy httpd=httpd:latest
+- **To update a deployment with a new image** </br> $ k set image deployment httpd-deploy httpd=httpd:latest #httpd= is container-name=
 - Create a configMap from literal </br> $ k create cm my-cm --from-literal env=prod --from-literal color=blue
 - Create a configMap from file </br> $ k create configmap app-config --from-file=app-config.properities
 - Create a secret from literal </br> $ k create secret app-secret --from-literal=APP_COLOR=blue
