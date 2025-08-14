@@ -1,7 +1,7 @@
 - Set alias for kubectl </br>$ alias k=kubectl
-- Get kubectl version </br> $ k version --short
-- Get info about a k8s object </br> $ k explain pod </br> $ k explain pod.spec
-- Get yml structure of a k8s object </br> $ k explain pod --recursive </br> $ k explain pod | head -n3
+- Get kubectl version </br> $ k version
+- Get info about a k8s object </br> $ k explain rs.spec </br> $ k explain deployment
+- Get yml structure of a k8s object </br> $ k explain pod --recursive </br> $ k explain pod | head -n3 </br> $ k explain pod | grep VERSION
 - Get cluster info </br> $ k cluster-info </br> 
 - Get detailed view of cluster information </br> $ k cluster-info dump
 - Get configuration </br> $ k config -h </br> k config view # View content of ~/.kube/config | /etc/kubernetes/admin.conf
@@ -10,7 +10,7 @@
 - Get users </br> $ k config get-users
 - Get all clusters </br> $ k config get-clusters
 - Get version </br> $ k api-resources | grep replicaset
-- Get version </br> $ k explain replicaset | grep VERSION
+- Run the command to get exact the number of namespaces </br> $ k  get ns --no-headers | wc -l
 - **Display events for a given namespace** </br> $ k get events -n default
 - schedule a pod and view the events to get which scheduler picked it up </br> $ k run httpd --image=httpd && k get events
 - **Set bash completion**
@@ -21,9 +21,11 @@
    - set tabstop=2 shiftwidth=2 expandtab ai  
    - if you already have tabs ":retab"
 - Connect to Kube API Server via proxy </br> $ k proxy # This lists API Groups
-- Get the version of KAS via http call </br? k proxy &; curl http://localhost:8001/version; curl http://localhost:8001/api-resources
+- Get the version of KAS via http call </br? k proxy &; curl http://localhost:8001/version; curl http://localhost:8001/apis
 - How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver </br> sudo journalctl -u kubelet -f
-- **Create a pod manifest for nginx  image with requests and limits and run a sleep command** </br> $ k run httpd -o yaml --dry-run=client --image=httpd --requests "cpu=100m,memory=256Mi" --limits "cpu=200m,memory=512Mi" --namespace=default --command --sh -c "sleep 300" > nginx.yml </br> kubectl run httpd -o yaml --dry-run=client --image=httpd --requests "cpu=100m,memory=150Mi" --limits "cpu=200m,memory=300Mi" --port=80 --hostport=80 --namespace=default -l name=httpd --restart=Never --command -- sleep 200
+- **Create a pod manifest for nginx  image with requests and limits and run a sleep command** </br> 
+$ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --command -- sh
+ -c "sleep 300" > pod.yaml </br> $ k set resources -f pod.yaml --requests=cpu=100m,memory=256Mi --limits=cpu=200m,memory=512Mi --local -o yaml > pod-with-limits.yaml 
 - Execute a command on a pod </br> $ k exec nginx -- date -s '19 APR 2012 11:14:00'
 - Create a pod with only passing arguments to a command without passing any commands </br> $ kubectl run nginx -o yaml --dry-run=client --image=nginx -- "--color=pink" 
 - **Create an interactive shell on a pod** </br> $ k run -it --rm --restart=Never busybox --image=busybox:1.28 sh </br> $ k exec -it nginx /bin/bash
