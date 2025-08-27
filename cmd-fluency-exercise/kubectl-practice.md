@@ -79,3 +79,4 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
 - Inquire context using filtering functionality of json query path </br> $ k config view --kubeconfig=my-kube-config -o=jsonpath="{ .contexts[?(@.context.user=='aws-user')].name}"   
     - Remember to use double quotes for jsonpath query when you use filter with single quotes inside the query
 - To delete a pod without delay </br> $ k delete pod mypod --grace-period=0 --force
+- To get the last state </br> $ k describe pod podname | grep -A5 "Last State"
