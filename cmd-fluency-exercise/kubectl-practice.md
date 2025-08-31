@@ -25,7 +25,8 @@
 - How to troubleshoot kubelet and KAS </br> $ journalctl -u kubelet </br> $ journalctl -u kube-apiserver </br> sudo journalctl -u kubelet -f
 - **Create a pod manifest for nginx  image with requests and limits and run a sleep command** </br> 
 $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --command -- sh
- -c "sleep 300" > pod.yaml </br> $ k set resources -f pod.yaml --requests=cpu=100m,memory=256Mi --limits=cpu=200m,memory=512Mi --local -o yaml > pod-with-limits.yaml 
+ -c "sleep 300" > pod.yaml </br> $ k set resources -f pod.yaml --requests=cpu=100m,memory=256Mi --limits=cpu=200m,memory=512Mi --local -o yaml > pod-with-limits.yaml
+- $ k run ubuntu-sleeper --image=ubuntu --command -- sleep 5000 </br>
 - Execute a command on a pod </br> $ k exec nginx -- date -s '19 APR 2012 11:14:00'
 - Create a pod with only passing arguments to a command without passing any commands </br> $ kubectl run nginx -o yaml --dry-run=client --image=nginx -- "--color=pink" 
 - Create a pod running on the port 8080 </br> $kubectl run custom-nginx --image=nginx --port=8080
