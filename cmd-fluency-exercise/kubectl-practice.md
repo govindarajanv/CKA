@@ -81,3 +81,4 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
     - Remember to use double quotes for jsonpath query when you use filter with single quotes inside the query
 - To delete a pod without delay </br> $ k delete pod mypod --grace-period=0 --force
 - To get the last state </br> $ k describe pod podname | grep -A5 "Last State"
+- HPA </br> $ k autoscale deployment nginx-deployment --max=3 --cpu-percent=80
