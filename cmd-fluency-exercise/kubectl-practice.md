@@ -70,7 +70,7 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
 - Create a configMap from file </br> $ k create configmap app-config --from-file=app-config.properities
 - Create a secret from literal </br> $ k create secret app-secret --from-literal=APP_COLOR=blue
 - Create a secret from file </br> $ k create secret app-secret --from-file=app-secret.properities
-- Perform draining of nodes </br> $ k cordon node01 </br> $ k drain node01 </br> $ k uncordon node01
+- Perform draining of nodes </br> $ k cordon node01 </br> $ k drain node01 --ignore-daemonsets </br> $ k uncordon node01
 - **Create a service account 'sa1'** </br> $ k create sa sa1 </br> $ TOKEN=$(kubectl describe secrets "$(kubectl describe serviceaccount govind -n default| grep -i Tokens | awk '{print $2}')" -n default | grep token: | awk '{print $2}') </br> $ k config set-credentials test-user --token=$TOKEN </br> $ kubectl config get-clusters </br> $ kubectl config get-users </br> $ kubectl config set-context test-user@kubernetes --cluster=kubernetes --user=test-user </br> $ kubectl config use-context test-user@kubernetes </br> $ kubectl get pods --all-namespaces # Please modify role and rolebinding for setting the required permissions Rolebinding subject can be users or service accounts
 - Check access </br> $ k auth can-i create deployments </br> $ k auth can-i delete nodes
 - Check access for other users </br> $ k auth can-i create deployments --as dev-user -n default
