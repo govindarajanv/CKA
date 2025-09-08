@@ -2,6 +2,7 @@
 
 There are two ways. One is to sequentially upgrade using kubeadm but leap upgradation from one older version to directly newer version is not possible
 
+- $ kubectl get nodes # get node's k8s version
 - $ kubeadm version
 - $ kubeadm upgrade plan
 - $ kubeadm upgrade apply <version>
