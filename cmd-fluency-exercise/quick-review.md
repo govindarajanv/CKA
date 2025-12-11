@@ -10,3 +10,4 @@
 - To view logs </br> $ kubectl logs -f event-simulator <container name>
 - deployments $ kubectl rollout statis deployment/deployment-name </br> $ kubectl rollout history deployment/deployment-name </br> $ kubectl rollout undo deployment/myapp-deploymentname
 - To create Config Map </br> $ kubectl create configmap app-config --from-literal=APP_COLOR=blue </br> $ kubectl create configmap app-config --from-file=app-config.properities
+- To check certificate details </br> $ openssl x509 -in file-path.crt -text -noout
