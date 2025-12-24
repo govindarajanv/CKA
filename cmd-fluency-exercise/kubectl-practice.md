@@ -85,3 +85,4 @@ $ k run httpd -o yaml --dry-run=client --image=httpd --namespace=default --comma
 Set service account for a deployment </br> $ kubectl set serviceaccount deploy/web-dashboard <service account>
 - list pods as a different user </br> $ kubectl get pods --as dev-user
 - approve certificate CSR </br> $ kubectl certificate approve csrname
+- check which cni is installed </br> $ kubectl cluster-info dump | grep -i cni
